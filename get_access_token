@@ -1,0 +1,25 @@
+// Не работает (Splica)
+curl -X POST "http://localhost:8080/oauth2/token?
+client_id=client&
+redirect_uri=https://www.manning.com/authorized&
+grant_type=authorization_code&
+code=sYLSXmRiVwe7X-kiR8y_EzhG9jgNaHgDuYrLeyWxU_VbLoCJkcUNyPEXOUtiH0F7r-fsWZqTv4zz4YGC1ljC5847VFkJkbiEHR0E1r-EAql1a_V2_TBCvXOVV_7XDwm3&
+code_verifier=wEdaSMjKtG8zTTlzYra79DCD4D08Tlp5rgf1RYDG9ko" \
+--header 'Authorization: Basic Y2xpZW50OnNlY3JldA=='
+
+
+// Работает (Keycloak documentation Github)
+curl -X POST http://localhost:8080/realms/myrealm/protocol/openid-connect/token \
+-H 'content-type: application/x-www-form-urlencoded' \
+-d 'client_id=client&client_secret=secret' \
+-d 'username=bill&password=password&grant_type=password' | jq --raw-output '.access_token'
+
+
+
+// Работает (Splica)
+curl -X POST http://localhost:8080/oauth2/token \
+-H 'content-type: application/x-www-form-urlencoded' \
+-H 'Authorization: Basic Y2xpZW50OnNlY3JldA==' \
+-d 'client_id=client&redirect_uri=https://www.manning.com/authorized&grant_type=authorization_code&code=kJyjt-wLyi4W8R5CJ-Z3kBeRL7CXOXJXMKa08hJBc96uhhhoU30JGu0iFjME2sDadfn_gcGPYjL2uxmP84rwO0BF9--56vFwTH3st8DixtZEA-x2oUMtIg-1CczLqWKY&code_verifier=8rJuU8ADtRalLozM49pU3C8TgJUhGs3KkUzxqHVN7n8'
+
+
