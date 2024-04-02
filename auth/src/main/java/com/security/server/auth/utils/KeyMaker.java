@@ -7,6 +7,8 @@ import java.util.Base64;
 
 // http://localhost:8080/oauth2/authorize?response_type=code&client_id=client&scope=openid&redirect_uri%20=https://www.manning.com/authorized&code_challenge=D53tOzl7Z9k879RPSe41Jb74Z5mUyrHASVtSe7laS9g&code_challenge_method=S256
 // http://localhost:8080/oauth2/authorize?response_type=code&client_id=client&scope=openid&redirect_uri=https://www.manning.com/authorized&code_challenge=9dA-E-XpWCeqovcxCOpxJzPIbdRgJknAjbmkQ8yrvDk&code_challenge_method=S256
+// http://localhost:8080/oauth2/authorize?response_type=code&client_id=client&scope=openid&redirect_uri=https://www.manning.com/authorized&code_challenge=O47h0CB0uAxXWhQpCQxfqu367HMa4LBZXV_udhNfNNQ&code_challenge_method=S256
+
 public class KeyMaker {
     private static String getVerifier() {
         SecureRandom secureRandom = new SecureRandom();
