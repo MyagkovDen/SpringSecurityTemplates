@@ -65,7 +65,7 @@ public class SecurityConfig {
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http)
             throws Exception {
         // Подключаем аутентификацию через форму логина
-        http.formLogin(Customizer.withDefaults());
+            http.formLogin(Customizer.withDefaults());
         // Открываем доступ к эндпойнтам только для аутентифицированных пользователей
         http.authorizeHttpRequests(
                 c -> c.anyRequest().authenticated()
@@ -97,9 +97,13 @@ public class SecurityConfig {
                 .clientSecret("secret")
                 .clientAuthenticationMethod(
                         ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                // Для сервера
                 .authorizationGrantType(
                         AuthorizationGrantType.AUTHORIZATION_CODE)
                 .redirectUri("https://www.manning.com/authorized")
+                // Для клиента
+                .authorizationGrantType(
+                        AuthorizationGrantType.CLIENT_CREDENTIALS)
                 .scope(OidcScopes.OPENID)
                 .build();
         return new InMemoryRegisteredClientRepository(registeredClient);
@@ -137,6 +141,4 @@ public class SecurityConfig {
             claims.claim("priority", "HIGH");
         };
     }
-
-
 }
